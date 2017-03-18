@@ -120,4 +120,18 @@ int gyroscope::readCalibrationParams(int &xoffset, int &yoffset, int&zoffset,
 	return 0;
 }
 
+int gyroscope::writeCalibrationParams(int xoffset, int yoffset, int zoffset,
+								  	  float xvar, float yvar, float zvar)
+{
+	xOffset = xoffset;
+	yOffset = yoffset;
+	zOffset = zoffset;
+	xVar = xvar;
+	yVar = yvar;
+	zVar = zvar;
+
+	return 0;
+}
+
+
 

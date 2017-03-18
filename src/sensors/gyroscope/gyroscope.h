@@ -47,7 +47,14 @@ class gyroscope : public sensor {
 		// read the offset, variants
 		int readCalibrationParams(int &xoffset, int &yoffset, int&zoffset,
 								  float &xvar, float &yvar, float &zvar);
-	private: 
+
+		// set the calibration parameters from offline experiment.
+		// you can calculate the offset and variant in Matlab by the raw
+		// data samples.
+		int writeCalibrationParams(int xoffset, int yoffset, int zoffset,
+								  float xvar, float yvar, float zvar);
+
+		// open these two method is to allow doing calibration offline.
 		virtual int readRawData(int &X, int &Y, int &Z) {};
 		virtual int readTemperature(float &temperature) {};
 

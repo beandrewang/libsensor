@@ -69,7 +69,8 @@ class accelerometer : public sensor {
 		int writeCalibrationParams(int xoffset, int yoffset, int zoffset,
 								  float xscale, float yscale, float zscale,
 								  float xvar, float yvar, float zvar);
-	private:
+
+		// open these two funcs is to allow doing calibration offline
 		virtual int readRawData(int &X, int &Y, int &Z) {};
 		virtual int readTemperature(float &temperature) {};
 	private:
