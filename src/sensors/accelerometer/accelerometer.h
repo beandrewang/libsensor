@@ -45,7 +45,7 @@ class accelerometer : public sensor {
 		// unit: m/s^2
 		int readData(float &X, float &Y, float &Z);
 
-		// calculate the zero offset and variance, 
+		// calculate the zero offset and variance,
 		// you have to make the accelerometer be in 6 orientations,
 		// -----------------------------------------------
 		// X   0g  -1g   0g   +1g   0g   0g
@@ -53,10 +53,10 @@ class accelerometer : public sensor {
 		// Z   0g   0g   0g    0g  +1g  -1g
 		// -----------------------------------------------
 		// before calling this func
-		// 
-		// Anyway, you can directly set the calibration parameters if you 
+		//
+		// Anyway, you can directly set the calibration parameters if you
 		// want to do the calibration offline. For example, you can collect
-		// the samples and calculate the calibration params by Matlab or 
+		// the samples and calculate the calibration params by Matlab or
 		// other software, set the calibration parameters by calling function
 		// - writeCalibrationParams
 		int calibration();
@@ -91,7 +91,7 @@ class accelerometer : public sensor {
 		// B is a identity matrix [1 0 0; 0 1 0; 0 0 1]
 		// X is the samples average collected whey x = 1g, y = 1g, z = 1g.
 		// This way, A = X^-1 * 9.8
-		// if you want to use this more precise transform, rewrite the calibration 
+		// if you want to use this more precise transform, rewrite the calibration
 		// method.
 		float xScale, yScale, zScale;
 		// the linear fitting for the temprature drift
@@ -107,5 +107,5 @@ class accelerometer : public sensor {
 extern "C" }
 #endif
 
-#endif // __LIBSENSOR__ACCELEROMETER__H__
+#endif // __LIBSENSOR__ACCELEROMETER__H__
 

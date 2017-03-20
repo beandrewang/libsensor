@@ -22,7 +22,7 @@
 
 #include "gyroscope.h"
 
-gyroscope::gyroscope(interface *intf) : 
+gyroscope::gyroscope(interface *intf) :
 					sensor(intf),
 					xOffset(0), yOffset(0), zOffset(0),
 					xVar(.0f), yVar(.0f), zVar(.0f),
@@ -32,8 +32,8 @@ gyroscope::gyroscope(interface *intf) :
 }
 
 int gyroscope::readData(float &X, float &Y, float &Z)
-{
-	
+{
+
 }
 
 int gyroscope::calibration()
@@ -45,7 +45,7 @@ int gyroscope::calibration()
 	for(int i = 0; i < NUMBER_SAMPLES_FOR_CALIBRATION; i++)
 	{
 		assert(!readRawData(x, y, z));
-		assert(!readTemperature(&curTemp));	
+		assert(!readTemperature(&curTemp));
 
 		int xDrift = curTemp * tA + tB;
 		int yDrift = curTemp * tA + tB;
