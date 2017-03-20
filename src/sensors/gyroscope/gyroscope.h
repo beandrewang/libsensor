@@ -36,6 +36,8 @@ class gyroscope : public sensor {
 		~gyroscope() { }
 
 		// read the physical data converted from the data in digital register
+		// the default method is for 3-axis, you can overwrite this method if
+		// you select 1-axis or 2-axis sensors
 		// unit: rad/s
 		int readData(float &X, float &Y, float &Z);
 		

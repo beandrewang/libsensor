@@ -24,7 +24,6 @@
 
 gyroscope::gyroscope(interface *intf) : 
 					sensor(intf),
-					x(0), y(0), z(0),
 					xOffset(0), yOffset(0), zOffset(0),
 					xVar(.0f), yVar(.0f), zVar(.0f),
 					xScale(.0f), yScale(.0f), zScale(.0f),
@@ -34,29 +33,7 @@ gyroscope::gyroscope(interface *intf) :
 
 int gyroscope::readData(float &X, float &Y, float &Z)
 {
-	int x = 0, y = 0, z = 0;
-	float curTemp = .0f, X = .0f, Y = .0f, Z = .0f;
-	assert(readRawData(x, y, z));
-	assert(readTemperature(&curTemp));	
-
-	int xDrift = curTemp * tA + tB;
-	int yDrift = curTemp * tA + tB;
-	int zDrift = curTemp * tA + tB;
-
-	if(0 == tA && 0 == tB) // didn't do temperature drift experiment
-	{
-		xDrift = yDrift = zDrift = 0;
-	}
-
-	x = x - xDrift;
-	y = y - yDrift;
-	z = z - zDrift;
 	
-	X = (x - xOffset) * xScale;
-	Y = (y - yOffset) * yScale;
-	Z = (z - zOffset) * yScale;
-
-	return 0;
 }
 
 int gyroscope::calibration()

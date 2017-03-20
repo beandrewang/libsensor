@@ -35,8 +35,8 @@ class sensor {
 	public: 
 		sensor(interface *intf) 		{ this->intf = intf; };
 		~sensor() 		{ };
-		virtual int 	calibration() { };
-		virtual int 	filtering() { };
+		virtual int 	calibration() = 0;
+		virtual int 	filtering() = 0;
 
 	private:
 		interface *intf;

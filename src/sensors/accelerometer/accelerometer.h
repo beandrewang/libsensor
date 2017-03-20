@@ -39,7 +39,9 @@ class accelerometer : public sensor {
 		accelerometer(interface *intf);
 		~accelerometer();
 
-		// read the physical data converted from the data in digital register
+		// read the physical data converted from the data in digital register.
+		// the default method is for 3-axis, you can overwrite this method if
+		// you select 1-axis or 2-axis sensors
 		// unit: m/s^2
 		int readData(float &X, float &Y, float &Z);
 

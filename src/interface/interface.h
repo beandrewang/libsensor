@@ -23,6 +23,11 @@
 #ifndef __LIBSENSOR_INTERFACE_H__
 #define __LIBSENSOR_INTERFACE_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 namespace libsensor {
 	class interface;
 }
@@ -32,9 +37,14 @@ class interface {
 		interface() { }
 		~interface() { }
 
-		virtual int read(int reg, int &value) { };
-		virtual int write(int reg, int value) { };
+		virtual int read(int reg, int &value) = 0;
+		virtual int write(int reg, int value) = 0;
 };
+
+#ifdef __cplusplus
+extern "C" }
+#endif
+
 
 #endif // __LIBSENSOR_INTERFACE_H__
 
