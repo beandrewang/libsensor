@@ -20,7 +20,7 @@
 	SOFTWARE.
  */
 
-#include <cmath.h>
+#include <cmath>
 #include "accelerometer.h"
 
 accelerometer::accelerometer(interface *intf) :
@@ -38,7 +38,7 @@ int accelerometer::readData(float &X, float &Y, float &Z)
 	int x = 0, y = 0, z = 0;
 	float curTemp = .0f, X = .0f, Y = .0f, Z = .0f;
 	assert(!readRawData(x, y, z));
-	assert(!readTemperature(&curTemp));	
+	assert(!readTemperature(&curTemp));
 
 	int xDrift = curTemp * tA + tB;
 	int yDrift = curTemp * tA + tB;
@@ -52,7 +52,7 @@ int accelerometer::readData(float &X, float &Y, float &Z)
 	x = x - xDrift;
 	y = y - yDrift;
 	z = z - zDrift;
-	
+
 	X = (x - xOffset) * xScale;
 	Y = (y - yOffset) * yScale;
 	Z = (z - zOffset) * yScale;
@@ -72,14 +72,14 @@ int accelerometer::calibration()
 	int xSum[4] = {0}, ySum[4] = {0}, zSum[4] = [0];
 	int xxSum[4] = {0}, yySum[4] = {0}, zzSum[4] = {0};
 	int x1gSum = 0, y1gSum = 0, z1gSum = 0;
-	
+
 	while(~(b001 & b00_1 & b010 & b0_10 & b100 & b_100))
 	{
 		assert(!readRawData(x, y, z));
-		
+
 		if(std::abs(x) < raw0gThreshold &&
 		   std::abs(y) < raw0gThreshold &&
-		   (z - raw1g) < raw0gThreshold) 
+		   (z - raw1g) < raw0gThreshold)
 		{
 			// 001g
 			if(count001++ < NUMBER_SAMPLES_FOR_CALIBRATION)
@@ -97,13 +97,13 @@ int accelerometer::calibration()
 		}
 		else if(std::abs(x) < raw0gThreshold &&
  			    std::abs(y) < raw0gThreshold &&
- 			    (-z + raw1g) < raw0gThreshold) 
+ 			    (-z + raw1g) < raw0gThreshold)
 		{
 			//00-1g
 			if(count00_1++ < NUMBER_SAMPLES_FOR_CALIBRATION)
 			{
 				xSum[1] += x;
-				ySum[1] += y; 
+				ySum[1] += y;
 				xxSum[1] += x^2;
 				yySum[1] += y^2;
 			}
@@ -235,7 +235,7 @@ int accelerometer::writeCalibrationParams(int xoffset, int yoffset, int zoffset,
 	xVar = xvar;
 	yVar = yvar;
 	zVar = zvar;
-	
+
 	return 0;
 }
 

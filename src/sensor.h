@@ -32,7 +32,7 @@ namespace libsensor{
 }
 
 class sensor {
-	public: 
+	public:
 		sensor(interface *intf) 		{ this->intf = intf; };
 		~sensor() 		{ };
 		virtual int 	calibration() = 0;

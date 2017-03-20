@@ -40,9 +40,9 @@ class gyroscope : public sensor {
 		// you select 1-axis or 2-axis sensors
 		// unit: rad/s
 		int readData(float &X, float &Y, float &Z);
-		
-		// calculate the zero offset and variance, 
-		// you have to make the gyro be in stationary state before calling 
+
+		// calculate the zero offset and variance,
+		// you have to make the gyro be in stationary state before calling
 		// this func
 		int calibration();
 
@@ -60,22 +60,22 @@ class gyroscope : public sensor {
 		virtual int readRawData(int &X, int &Y, int &Z) {};
 		virtual int readTemperature(float &temperature) {};
 
-	private:		
-		// The zero offset, for the raw sensor data, 
+	private:
+		// The zero offset, for the raw sensor data,
 		// How to get the offset for each axis?
 		// 1, Make the gyroscope in a stationary state, the output from each axis
 		//	  should be 0.
 		// 2, Read a seria of gyro raw data and calcaluate the mean value for each axis.
-		// 3, Save the mean values, they are xOffset, yOffset, zOffset seperately. 
+		// 3, Save the mean values, they are xOffset, yOffset, zOffset seperately.
 		int xOffset, yOffset, zOffset;
-		// The variance for physical data of the gyroscope, 
+		// The variance for physical data of the gyroscope,
 		// it is used for kalman filter when doing sensor fusion with accelerometer
 		float xVar, yVar, zVar;
 		// The scales, which convert the raw data to physical
 		// How to get the scale for each axis?
 		// 1, Read the datasheet of this gyro and find a formular, which would
 		// 	  convert the digital value from the register to rad/s.
-		// 2, Use the formular to calculate the scale for each axis and save.  
+		// 2, Use the formular to calculate the scale for each axis and save.
 		float xScale, yScale, zScale;
 		// the linear fitting for the temprature drift
 		// the zero drift equation is: y = tA*x + tB
